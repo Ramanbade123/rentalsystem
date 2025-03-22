@@ -31,8 +31,15 @@ const App = () => {
         {/* Login Page */}
         <Route path="/login" element={<Login />} />
 
-        {/* Signup Page */}
-        <Route path="/signup" element={<Signup />} />
+        {/* Signup Page with Background Fix */}
+        <Route
+          path="/signup"
+          element={
+            <div className="bg-gray-100 min-h-screen flex justify-center items-center">
+              <Signup />
+            </div>
+          }
+        />
       </Routes>
     </Router>
   );

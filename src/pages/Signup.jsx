@@ -1,86 +1,61 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 
 const Signup = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
-
-  const handleSignup = (e) => {
-    e.preventDefault();
-    if (!email || !password || !confirmPassword) {
-      setError("All fields are required.");
-    } else if (password !== confirmPassword) {
-      setError("Passwords do not match.");
-    } else {
-      localStorage.setItem("userEmail", email);
-      alert("Signup successful! Please log in.");
-      navigate("/login"); // Navigate to login page after successful signup
-    }
-  };
-
   return (
-    <div className="flex justify-center items-center h-screen bg-gradient-to-br from-blue-50 to-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-96 border border-blue-300">
-        <h2 className="text-2xl font-bold text-center mb-6">Sign Up</h2>
-
-        <form onSubmit={handleSignup}>
-          <div className="mb-4">
-            <label className="block text-gray-700 mb-1">Email</label>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="bg-white p-10 rounded-2xl shadow-lg w-full max-w-md">
+        <h2 className="text-3xl font-extrabold text-center mb-6">
+          Create your free account
+        </h2>
+        <form>
+          {/* Name Fields */}
+          <div className="flex space-x-4">
             <input
-              type="email"
-              className="w-full p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              placeholder="First Name"
+              className="w-1/2 p-3 border border-gray-300 rounded-full outline-none focus:border-blue-500"
+            />
+            <input
+              type="text"
+              placeholder="Last Name"
+              className="w-1/2 p-3 border border-gray-300 rounded-full outline-none focus:border-blue-500"
             />
           </div>
 
-          <div className="mb-4">
-            <label className="block text-gray-700 mb-1">Password</label>
-            <input
-              type="password"
-              className="w-full p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
+          {/* Email */}
+          <input
+            type="email"
+            placeholder="Email Address"
+            className="w-full p-3 mt-4 border border-gray-300 rounded-full outline-none focus:border-blue-500"
+          />
 
-          <div className="mb-4">
-            <label className="block text-gray-700 mb-1">Confirm Password</label>
-            <input
-              type="password"
-              className="w-full p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Confirm your password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-          </div>
+          {/* Password */}
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full p-3 mt-4 border border-gray-300 rounded-full outline-none focus:border-blue-500"
+          />
 
-          {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
+          {/* Confirm Password */}
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            className="w-full p-3 mt-4 border border-gray-300 rounded-full outline-none focus:border-blue-500"
+          />
 
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition"
-          >
+          {/* Login Redirect */}
+          <p className="text-center text-sm mt-4">
+            Already a user?{" "}
+            <a href="/login" className="text-blue-600 font-semibold">
+              Login
+            </a>
+          </p>
+
+          {/* Signup Button */}
+          <button className="w-full bg-blue-600 text-white py-3 rounded-full mt-4 text-lg font-semibold hover:bg-blue-700 transition">
             Sign Up
           </button>
         </form>
-
-        <div className="text-center mt-4">
-          <p className="text-gray-600">
-            Already have an account? {" "}
-            <button
-              onClick={() => navigate("/login")} // Navigate to login page
-              className="text-blue-600 font-semibold hover:underline"
-            >
-              Login
-            </button>
-          </p>
-        </div>
       </div>
     </div>
   );
