@@ -7,40 +7,39 @@ import Categories from "./components/Categories";
 import ChooseUs from "./components/ChooseUs";
 import HowItWorks from "./components/HowItWorks";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup"; // Import Signup Page
+import Signup from "./pages/Signup";
+import Homepage from "./Homepage";
+// import homepage from "./homepage/homepage";
+
 
 const App = () => {
   return (
     <Router>
-      <Routes>
-        {/* Main Layout with Navbar and Footer */}
-        <Route
-          path="/"
-          element={
-            <>
-              <Navbar />
-              <Hero />
-              <Categories />
-              <ChooseUs />
-              <HowItWorks />
-              <Footer />
-            </>
-          }
-        />
-        
-        {/* Login Page */}
-        <Route path="/login" element={<Login />} />
+      <>
+        <Navbar />
+        <Routes>
+          {/* Home Page */}
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero />
+                <Categories />
+                <ChooseUs />
+                <HowItWorks />
+              </>
+            }
+          />
+          
+          {/* Login Page */}
+          <Route path="/login" element={<Login />} />
 
-        {/* Signup Page with Background Fix */}
-        <Route
-          path="/signup"
-          element={
-            <div className="bg-gray-100 min-h-screen flex justify-center items-center">
-              <Signup />
-            </div>
-          }
-        />
-      </Routes>
+          {/* Signup Page */}
+          <Route path="/signup" element={<Signup />} />
+          <Route path ="/Homepage" element={<Homepage />} />
+        </Routes>
+        <Footer />
+      </>
     </Router>
   );
 };

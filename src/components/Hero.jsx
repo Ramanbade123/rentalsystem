@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Signup from "../pages/Signup";
-
+import {Link} from 'react-router-dom'
 const Hero = () => {
   const [showLogin, setShowLogin] = useState(false);
 
@@ -30,12 +30,15 @@ const Hero = () => {
           {/* Buttons */}
           <div className="mt-6 flex flex-col sm:flex-row gap-4">
             {/* Sign Up Button */}
+            <Link to ="/signup">
             <button
               onClick={() => setShowLogin(true)} // Update state on click
               className="px-6 py-3 text-lg font-semibold text-blue-600 bg-white rounded-full shadow-lg hover:bg-gray-200 transition duration-300"
             >
               Sign Up
             </button>
+            </Link>
+            
 
             {/* Explore Rentals Button */}
             <button className="px-8 py-3 text-lg font-semibold text-white bg-blue-600 rounded-full shadow-lg hover:bg-blue-800 transition duration-300">
